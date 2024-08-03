@@ -1,0 +1,77 @@
+.chatRoomDialog {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  /* height: 50px; */
+  width: 300px;
+
+  transition: height 0.3s ease-in-out;
+  margin: 0;
+  z-index: 1000;
+}
+.maximizedDialog {
+  height: 400px;
+}
+
+.minimizedDialog {
+  height: 40px;
+}
+.chatRoomContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.1rem;
+  border-bottom: 1px solid #ccc;
+  background: #ccc;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: grey;
+  text-align: center;
+  padding-left: 12px;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 5px;
+  flex-grow: 1;
+}
+
+.sendButton {
+  margin: 5px;
+  padding: 5px 10px;
+}
+
+.toggleButton,
+.closeButton {
+  background: none;
+  border: none;
+  color: #797b7d;
+  cursor: pointer;
+}
+.modalFooter {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-top: 1px solid #ccc;
+  background: rgb(210, 207, 207);
+  width: 100%;
+}

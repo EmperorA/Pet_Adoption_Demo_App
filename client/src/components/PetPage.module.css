@@ -1,0 +1,53 @@
+.title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #717171;
+    margin-top: -5px;
+    margin-bottom: 12px;
+}
+
+.tags {
+    display: flex;
+    align-items: start;
+    gap: 2px;
+    text-align: end;
+    min-height: 16px;
+    margin-bottom: 30px;
+}
+
+.locationPin {
+    width: 18px;
+    height: 18px;
+    margin-right: 2px;
+}
+
+.aboutGrid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 15px;
+    }
+
+.aboutTitle {
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.aboutDesc {
+    font-size: 10px;
+    
+}
+
+.desc {
+    color: #777777;
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 30px;
+}

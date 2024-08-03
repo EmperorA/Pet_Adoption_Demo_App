@@ -1,0 +1,125 @@
+.landing {
+  background-color: rgb(213, 211, 211);
+  width: 100%;
+  height: 360vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.frontPage {
+  padding-top: 15rem;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  width: 300%; /* 3 slides, 100% each */
+  transition: transform 0.5s ease-in-out;
+  max-width: 100%;
+}
+
+.slide {
+  width: 100vw;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 0 10rem 5rem;
+  font-size: 2rem;
+}
+
+.navDots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 500;
+}
+
+.navDot {
+  width: 10px;
+  height: 10px;
+  background-color: rgb(93, 89, 89);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.navDot.active {
+  background-color: rgb(252, 249, 249);
+}
+/* Slide1 content */
+.slide1 div {
+  display: flex;
+  flex-direction: column;
+}
+.helpText {
+  font-size: 5rem;
+  font-weight: 700;
+}
+.slide1Img {
+  height: 15rem;
+  width: 20rem;
+  margin: 5rem 5rem 0 0;
+}
+
+/* Slide2 content */
+.joinText {
+  font-size: 5rem;
+  font-weight: 700;
+}
+.join {
+  color: white;
+  text-align: center;
+  background-color: grey;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  padding: 5px;
+  width: 30%;
+}
+.join:hover {
+  background-color: white;
+  color: rgb(78, 75, 75);
+  border: none;
+}
+.dogImg {
+  height: 15rem;
+  width: 20rem;
+  margin: 5rem 5rem 0 0;
+}
+/* Slide3 content */
+.slide3 div {
+  display: flex;
+  flex-direction: column;
+}
+.donateText {
+  font-size: 5rem;
+  font-weight: 700;
+}
+.slide1Img {
+  height: 15rem;
+  width: 20rem;
+  margin: 5rem 5rem 0 0;
+}
+/* Responsive  */
+@media (max-width: 768px) {
+  .navDots {
+    bottom: 20px; /* Adjust this value as needed for smaller screens */
+  }
+
+  .slide {
+    flex-direction: column; /* Adjust slide content layout for smaller screens */
+  }
+
+  .navDot {
+    width: 8px;
+    height: 8px;
+    margin: 0 3px;
+  }
+}

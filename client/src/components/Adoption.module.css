@@ -1,0 +1,94 @@
+.adoption {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  gap: 15px;
+}
+.sectionTitle {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.info {
+  display: grid;
+  grid-column: 3;
+}
+.infoCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 10px;
+  margin: 2rem;
+}
+.infoCard {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+.infoCard img {
+  height: 6rem;
+}
+.card {
+  background-color: grey;
+  border-radius: 10px;
+  flex: 1;
+  padding: 1rem;
+  height: 15rem;
+  width: 15rem;
+}
+.infoTitle {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.infoText {
+  font-size: 0.8rem;
+}
+.card button {
+  color: rgb(167, 161, 161);
+  background-color: rgb(70, 68, 68);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  width: 70%;
+}
+
+/* shelter */
+
+.shelter {
+  /* display: flex; */
+  flex-direction: column;
+  padding: 1rem;
+}
+.shelterHeading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: left;
+  padding-left: 2rem;
+}
+.shelterCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.shelterCard {
+  display: flex;
+  flex-direction: column;
+  height: 15rem;
+  width: 15rem;
+  background-color: rgb(159, 157, 157);
+  border-radius: 30px;
+  align-items: center;
+}
+.imgBox {
+  height: 10rem;
+  width: 10rem;
+  background-color: grey;
+  border-radius: 50%;
+  margin: 1rem;
+}
+.cardText {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: rgb(91, 89, 89);
+}

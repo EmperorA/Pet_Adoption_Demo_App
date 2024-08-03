@@ -1,0 +1,62 @@
+.customModal .modal-content {
+  background-color: grey;
+  color: white;
+  text-align: center;
+}
+.modalHeader {
+  background-color: grey;
+  border-bottom: none;
+  padding: 2rem 2rem 1rem 1rem;
+}
+.modalTitle {
+  text-align: center;
+  color: white;
+  font-size: 1.8rem;
+}
+.modalBody {
+  background-color: grey;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+.signInText {
+  color: rgb(176, 173, 173);
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: left;
+}
+.formBox {
+  display: grid;
+  flex-direction: row;
+  gap: 10px;
+}
+.formControl {
+  width: 100%;
+  border: none;
+  margin: 0;
+}
+.formText {
+  color: rgb(222, 215, 215);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.formText:hover {
+  text-decoration: underline;
+}
+.text {
+  color: rgb(170, 161, 161);
+  font-size: 0.8rem;
+}
+
+.loginBtn {
+  background-color: white;
+  color: grey;
+  font-weight: 700;
+  padding: 0.6rem 3rem;
+  border: none;
+  margin-top: 1rem;
+}
+.loginBtn:hover {
+  color: white;
+  background-color: grey;
+}
