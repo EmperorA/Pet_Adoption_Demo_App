@@ -23,31 +23,22 @@ const dbConfig = new Pool({
 const server = http.createServer(app);
 
 async function startServer() {
-  try {
-    // Connect to PostgreSQL
-    await dbConfig.connect(() => {
-      console.log("Connected to PostgreSQL database");
-    });
+  //here we will add await of DB connexion
+  dbConfig.connect(() => {
+    console.log("Connected to PostgreSQL database");
+  });
 
-    //TEST DB connexion: only for testing purposes
-    dbConfig.query("SELECT * FROM test", (err, result) => {
-      if (err) {
-        console.error("Error executing query", err);
-      } else {
-        console.log("Query result:", result.rows);
-      }
-    });
+  //TEST DB connexion: only for testing purposes
+  // dbConfig.query('SELECT * FROM test', (err, result) => {
+  //     if (err) {
+  //         console.error('Error executing query', err);
+  //     } else {
+  //         console.log('Query result:', result.rows);
+  //     }})
 
-    server.listen(PORT, () => {
-      console.log(`Listening on port ${PORT}`);
-    });
-  } catch (error) {
-    console.error(
-      "Error starting the server or connecting to the database:",
-      error
-    );
-    process.exit(1); // Exit the process with failure code
-  }
+  server.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+  });
 }
 
 startServer();
