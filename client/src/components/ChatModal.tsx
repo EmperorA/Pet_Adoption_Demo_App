@@ -23,13 +23,15 @@ export default function ChatRoom({isVisible,  onClose}: ChatModalProps) {
   }, [chatRoomId]);
 
   const handleSendMessage = async () => {
+    setMessage('')
     if (!user) {
       return <div>Please log in to access the chat.</div>;
     }
     if (message.trim() !== '') {
       await sendMessage(chatRoomId, user.email, message);
-      setMessage(''); 
+
     }
+    
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {

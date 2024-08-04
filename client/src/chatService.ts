@@ -3,6 +3,7 @@ import { collection, addDoc, query, orderBy, onSnapshot, Timestamp } from 'fireb
 import { Message } from './types'; 
 
 export const sendMessage = async (chatRoomId: string, userId: string, message: string): Promise<string> => {
+ 
   const docRef = await addDoc(collection(db, 'chatRooms', chatRoomId, 'messages'), {
     userId,
     message,
