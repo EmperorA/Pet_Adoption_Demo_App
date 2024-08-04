@@ -6,6 +6,7 @@
 
 */
 -- AlterTable
+ALTER TABLE "Listing" DROP CONSTRAINT "Listing_userId_fkey";
 ALTER TABLE "User" DROP CONSTRAINT "User_pkey",
 DROP COLUMN "id",
 ADD COLUMN     "id" UUID NOT NULL,
