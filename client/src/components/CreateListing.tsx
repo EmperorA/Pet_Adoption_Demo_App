@@ -8,8 +8,10 @@ import { useAuth } from '../AuthContext'
 
 export default function Discover() {
     const {user} = useAuth();
+
+    
     const [statusMsgOnSubmit, setStatusMsgOnSubmit] = useState('')
-    const [formData, setFormData] = useState<PetProfile>({...createListingInitialData, userId: user.id})
+    const [formData, setFormData] = useState<PetProfile>({...createListingInitialData, userId: user ? user.id: ""})
 
 
     useEffect(() => {
@@ -20,7 +22,11 @@ export default function Discover() {
             }));
         }
     }, [user]);
+     if (!user) {
+    return <div>Please log in to access the chat.</div>;
+  }
     // change any later when figure out type of event
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function handleChange(event :any) {
         setFormData( (prevFormData :PetProfile) => {
             return {
@@ -62,6 +68,7 @@ export default function Discover() {
         }
     }
     // change any later when figure out type of event
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function handleSubmit(e: any) {
         e.preventDefault();
         if (user && user.role === 'admin') {

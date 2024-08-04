@@ -23,6 +23,9 @@ export default function ChatRoom({isVisible,  onClose}: ChatModalProps) {
   }, [chatRoomId]);
 
   const handleSendMessage = async () => {
+    if (!user) {
+      return <div>Please log in to access the chat.</div>;
+    }
     if (message.trim() !== '') {
       await sendMessage(chatRoomId, user.email, message);
       setMessage(''); 
