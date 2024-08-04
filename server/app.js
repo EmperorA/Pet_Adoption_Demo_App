@@ -21,7 +21,7 @@ app.use(
     origin: (origin, callback) => {
       const allowedOrigins = [
         process.env.CLIENT_URL,
-        "https://pet-adoption-demo-app.onrender.com",
+        "https://pet-adoption-demo-app.onrender.com/",
       ];
       if (allowedOrigins.includes(origin) || !origin) {
         callback(null, true);
