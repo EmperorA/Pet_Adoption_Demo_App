@@ -21,9 +21,9 @@ app.use(
     origin: (origin, callback) => {
       const allowedOrigins = [
         process.env.CLIENT_URL,
-        "https://pet-adoption-demo-app.onrender.com/",
+        "https://pet-adoption-demo-app.onrender.com",
       ];
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      if (allowedOrigins.includes(origin) || !origin) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
