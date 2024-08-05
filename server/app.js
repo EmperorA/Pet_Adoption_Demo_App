@@ -1,12 +1,12 @@
 //Module imports
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors"); //for client side requests
-const helmet = require("helmet"); // good practice for securing http response headers
-const morgan = require("morgan"); // for logging http requests
-const session = require("express-session"); // for session-based authentication
-const passport = require("passport"); //for authentication
-const MemoryStore = require("memorystore")(session); //for storing session data in Express
+const cors = require("cors");
+const helmet = require("helmet");
+const morgan = require("morgan");
+const session = require("express-session");
+const passport = require("passport");
+const MemoryStore = require("memorystore")(session);
 
 //Create express server
 const app = express();
@@ -15,10 +15,22 @@ app.use(express.json());
 
 //add Helmet
 app.use(helmet());
+
+// Define allowed origins
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  "https://pet-adoption-demo-app.onrender.com",
+];
 // add cors middleware
 app.use(
   cors({
-    origin: "*",
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
