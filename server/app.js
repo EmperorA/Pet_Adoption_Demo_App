@@ -12,11 +12,8 @@ const MemoryStore = require("memorystore")(session);
 const app = express();
 
 // add cors middleware
-app.use(
-  cors({
-    origin: false,
-  })
-);
+app.use(cors());
+
 //add JSON parsing
 app.use(express.json());
 
@@ -56,6 +53,9 @@ app.use((req, res, next) => {
   // console.log("User:", req.user);
   next();
 });
+
+//preflight
+app.options("*", cors());
 
 //Import v1 api configuration. Good practice to work with versions
 const api = require("./api");
