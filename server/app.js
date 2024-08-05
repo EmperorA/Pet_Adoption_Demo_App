@@ -14,7 +14,7 @@ const app = express();
 // add cors middleware
 app.use(
   cors({
-    origin: "false",
+    origin: false,
   })
 );
 //add JSON parsing
