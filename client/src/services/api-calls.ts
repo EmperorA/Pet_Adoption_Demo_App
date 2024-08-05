@@ -1,6 +1,6 @@
 import { PetProfile } from "../types";
 
-const baseUrl = "//http://localhost:8000/v1"
+const baseUrl = "http://localhost:8000/v1"
 
 export async function getListings():Promise<{ items: PetProfile[] }> {
 
