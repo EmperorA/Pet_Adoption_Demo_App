@@ -1,4 +1,7 @@
 import styles from './Adoption.module.css'
+import checklist from "../assets/checklist.svg"
+import dog from "../assets/dogBtn.svg"
+import dogPaw from "../assets/favourite-paw.svg"
 
 export default function Adoption (){
   return(
@@ -9,7 +12,7 @@ export default function Adoption (){
                 
                 <div className={styles.infoCards}>
                   <div className={styles.infoCard}>
-                    <img src="./src/assets/checklist.svg" alt="checklist-img" />
+                    <img src={checklist} alt="checklist-img" />
                     <div className={styles.card}>
                     <h2 className={styles.infoTitle}>CHECKLIST FOR NEW ADOPTERS</h2>
                     <p className={styles.infoText}> Make the adoption transition as smooth as possible</p>
@@ -17,7 +20,7 @@ export default function Adoption (){
                     </div>
                   </div>
                   <div className={styles.infoCard}>
-                   <img src="./src/assets/dogBtn.svg" alt="dog-img" />
+                   <img src={dog} alt="dog-img" />
                     <div className={styles.card}>
                     <h2 className={styles.infoTitle}>ADOPTION ARTICLES</h2>
                     <p className={styles.infoText}> Learn more about caring for your new Pet</p>
@@ -25,7 +28,7 @@ export default function Adoption (){
                    </div>
                   </div>
                   <div className={styles.infoCard}>
-                    <img src="./src/assets/favourite-paw.svg" alt="dogPaw-img" />
+                    <img src={dogPaw} alt="dogPaw-img" />
                     <div className={styles.card}>
                     <h2 className={styles.infoTitle}>PET ADOPTION FAQS</h2>
                     <p className={styles.infoText}> Get answers to all the you questions you haven't though of for your adoption</p>
