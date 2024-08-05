@@ -17,7 +17,7 @@ export default defineConfig({
     }
   },
   define: {
-    'process.env': {
+    'import.meta.env': {
       VITE_API_KEY: process.env.VITE_API_KEY,
       VITE_AUTH_DOMAIN: process.env.VITE_AUTH_DOMAIN,
       VITE_DATABASE_URL: process.env.VITE_DATABASE_URL,
