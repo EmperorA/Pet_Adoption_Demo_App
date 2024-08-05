@@ -43,7 +43,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const fetchUser = async () => {
       setLoading(true);
       try {
-        const response = await fetch('https://pawfectmatch-api.onrender.com/v1/auth/user', { credentials: 'include' });
+        const response = await fetch('http://localhost:8000/v1/auth/user', { credentials: 'include' });
         if (response.ok) {
           const data = await response.json();
           setUser(data)
@@ -65,7 +65,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const fetchAdmins = async () => {
       try {
-        const response = await fetch('https://pawfectmatch-api.onrender.com/v1/user/search?role=shelter', { credentials: 'include' });
+        const response = await fetch('http://localhost:8000/v1/user/search?role=shelter', { credentials: 'include' });
         if (response.ok) {
           const data = await response.json();
           setAdmins(data);
@@ -84,7 +84,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (email: string, password: string, ) => {
     try {
-      const response = await fetch('https://pawfectmatch-api.onrender.com/v1/user/login', {
+      const response = await fetch('http://localhost:8000/v1/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         // credentials: 'include',
@@ -112,7 +112,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const register = async (email: string, password: string, role: string, onSuccess: (message: string) => void) => {
     try {
-      const response = await fetch('https://pawfectmatch-api.onrender.com/v1/user/register', {
+      const response = await fetch('http://localhost:8000/v1/user/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, role })
@@ -134,7 +134,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = async () => {
     try {
      
-      const response = await fetch('https://pawfectmatch-api.onrender.com/v1/user/logout', {
+      const response = await fetch('http://localhost:8000/v1/user/logout', {
         method: 'POST',
         credentials: 'include'
       });

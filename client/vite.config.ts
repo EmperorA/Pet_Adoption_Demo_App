@@ -10,7 +10,7 @@ export default defineConfig({
     port:3000,
     proxy: {
       '/v1': {
-        target: 'https://pawfectmatch-api.onrender.com',
+        target: 'http://localhost:8000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/v1/, '/v1')
       }
