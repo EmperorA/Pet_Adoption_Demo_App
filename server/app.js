@@ -19,7 +19,7 @@ app.use(helmet());
 // add cors middleware
 app.use(
   cors({
-    origin: "https://pet-adoption-demo-app.vercel.app",
+    origin: "*",
     // credentials: true,
   })
 );

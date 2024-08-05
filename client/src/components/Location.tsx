@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getCityFromCoordinates } from '../services/locationUtils'; // Adjust the path as needed
-
+import locationPin from "../assets/location-pin.svg"
 export default function Location (){
  
     const [city, setCity] = useState<string | null>(null);
@@ -32,7 +32,7 @@ export default function Location (){
       <div style={{marginLeft: '20px'}}>
         {city ? (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'left' }}>
-          <p style={{fontSize: '10px', color: 'white'}}>Location <img src="./src/assets/down-arrow.svg" alt="down-arrow"/></p>
+          <p style={{fontSize: '10px', color: 'white'}}>Location <img src={locationPin} alt="down-arrow"/></p>
           <p>{city}</p>
           </div>
         ) : (
