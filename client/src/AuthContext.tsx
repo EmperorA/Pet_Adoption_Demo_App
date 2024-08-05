@@ -87,7 +87,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const response = await fetch('https://pawfectmatch-api.onrender.com/v1/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
+        // credentials: 'include',
         body: JSON.stringify({ email, password })
       });
 
