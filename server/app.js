@@ -11,18 +11,18 @@ const MemoryStore = require("memorystore")(session);
 //Create express server
 const app = express();
 
+//add JSON parsing
+app.use(express.json());
+
+//add Helmet
+app.use(helmet());
+
 // add cors middleware
 app.use(
   cors({
     origin: true,
   })
 );
-
-//add JSON parsing
-app.use(express.json());
-
-//add Helmet
-app.use(helmet());
 
 //add logging
 app.use(morgan("combined")); //combined is a predefined format as to how the output is logged; this is the standard Apache combined log output
