@@ -14,9 +14,7 @@ const dbConfig = new Pool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   database: process.env.DATABASE_NAME,
-  ssl: {
-    rejectUnauthorized: false, // Adjust this based on your security needs
-  },
+  ssl: true,
 });
 
 //Create http server
