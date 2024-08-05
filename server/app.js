@@ -17,13 +17,12 @@ app.use(express.json());
 app.use(helmet());
 
 // add cors middleware
-// app.use(
-//   cors({
-//     origin:
-//       process.env.CLIENT_URL || "https://pet-adoption-demo-app.vercel.app",
-//     // credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: "https://pet-adoption-demo-app.vercel",
+    credentials: true,
+  })
+);
 
 //add logging
 app.use(morgan("combined")); //combined is a predefined format as to how the output is logged; this is the standard Apache combined log output
