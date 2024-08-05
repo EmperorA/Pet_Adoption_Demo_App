@@ -17,14 +17,17 @@ app.use(express.json());
 app.use(helmet());
 
 // Define allowed origins
-const allowedOrigins = [
-  process.env.CLIENT_URL,
-  "https://pet-adoption-demo-app.onrender.com",
-];
+const allowedOrigins = [process.env.CLIENT_URL];
 // add cors middleware
 app.use(
   cors({
-    origin: "*",
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: false,
   })
 );
