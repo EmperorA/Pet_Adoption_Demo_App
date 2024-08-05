@@ -10,21 +10,14 @@ const MemoryStore = require("memorystore")(session);
 
 //Create express server
 const app = express();
+
+// add cors middleware
+app.use(cors());
 //add JSON parsing
 app.use(express.json());
 
 //add Helmet
 app.use(helmet());
-
-// add cors middleware
-app.use(
-  cors({
-    origin: ["https://pet-adoption-demo-app.vercel.app"],
-    // credentials: true,
-    // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Specify allowed methods
-    // allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
 
 //add logging
 app.use(morgan("combined")); //combined is a predefined format as to how the output is logged; this is the standard Apache combined log output
