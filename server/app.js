@@ -12,7 +12,11 @@ const MemoryStore = require("memorystore")(session);
 const app = express();
 
 // add cors middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: true,
+  })
+);
 
 //add JSON parsing
 app.use(express.json());
