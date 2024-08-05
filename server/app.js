@@ -20,9 +20,9 @@ app.use(helmet());
 app.use(
   cors({
     origin: ["https://pet-adoption-demo-app.vercel.app"],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Specify allowed methods
-    allowedHeaders: ["Content-Type", "Authorization"],
+    // credentials: true,
+    // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Specify allowed methods
+    // allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
