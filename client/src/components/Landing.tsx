@@ -1,4 +1,8 @@
 import styles from "./Landing.module.css"
+import dog from "../assets/dog.png";
+import cat from "../assets/cat.png";
+import other from "../assets/otherAnimalsBtn.svg"
+
 import Header from './Header'
 import Footer from './Footer';
 import Adoption from './Adoption'
@@ -51,7 +55,7 @@ export default function Landing (){
                 <h2 className={styles.helpText}>Want to help homeless pets today?</h2>
                 <button onClick={showRegisterModal} className={styles.join}>Help Now</button>
               </div>
-              <img src="./src/assets/catBtn.svg" alt="fish" className={styles.slide1Img} />
+              <img src={other} alt="otherAnimals" className={styles.slide1Img} />
           </div>
           
           <div className={`${styles.slide} ${styles.slide2}`}>
@@ -59,14 +63,14 @@ export default function Landing (){
           <h2 className={styles.joinText}>Join our animal lovers community</h2>
             <button onClick={showRegisterModal} className={styles.join}>Join Now</button>
             </div>
-          <img src="./src/assets/dogBtn.svg" alt="dog-img" className={styles.dogImg} />
+          <img src={cat} alt="cat-img" className={styles.dogImg} />
           </div>
           <div className={`${styles.slide} ${styles.slide3}`}>
             <div className="div">
                 <h2 className={styles.donateText}>Street pets need our protection!</h2>
                 <button onClick={handleDonateClick} className={styles.join}>Donate Now</button>
                 </div>
-                <img src="./src/assets/dogBtn.svg" alt="dog-img" className={styles.dogImg} />
+                <img src={dog} alt="dog-img" className={styles.dogImg} />
           </div>
         </div>
         <div className={styles.navDots}>

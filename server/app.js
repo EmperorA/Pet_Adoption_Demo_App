@@ -16,23 +16,14 @@ app.use(express.json());
 //add Helmet
 app.use(helmet());
 
-// Define allowed origins
-const allowedOrigins = [process.env.CLIENT_URL];
 // add cors middleware
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (allowedOrigins.includes(origin) || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: false,
+    origin:
+      process.env.CLIENT_URL || "https://pet-adoption-demo-app.vercel.app",
+    // credentials: true,
   })
 );
-// Handle preflight requests for all routes
-app.options("*", cors());
 
 //add logging
 app.use(morgan("combined")); //combined is a predefined format as to how the output is logged; this is the standard Apache combined log output

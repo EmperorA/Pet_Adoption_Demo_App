@@ -3,6 +3,8 @@ import { useAuth } from '../AuthContext';
 import styles from './Header.module.css'
 import Location from './Location'
 
+import profile from "../assets/profile-icon.svg"
+
 
 interface HeaderProps {
     handleShowLogin: () => void;
@@ -66,7 +68,7 @@ useEffect(() => {
             </form>
            <div className={styles.userActions}>
            <div className={styles.profileIcon} onClick={toggleDropdown}>
-           <img src="./src/assets/profile-icon.svg" alt="Profile" />
+           <img src={profile} alt="Profile" />
             </div>
             {dropdownVisible && (
           <div className={styles.dropdownMenu} ref={dropdownRef}>
