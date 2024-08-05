@@ -24,14 +24,8 @@ const allowedOrigins = [
 // add cors middleware
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (allowedOrigins.includes(origin) || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
+    origin: "*",
+    credentials: false,
   })
 );
 // Handle preflight requests for all routes
