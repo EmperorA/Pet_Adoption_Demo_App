@@ -34,6 +34,9 @@ app.use(
     credentials: true,
   })
 );
+// Handle preflight requests for all routes
+app.options("*", cors());
+
 //add logging
 app.use(morgan("combined")); //combined is a predefined format as to how the output is logged; this is the standard Apache combined log output
 
