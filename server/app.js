@@ -19,8 +19,7 @@ app.use(helmet());
 // add cors middleware
 app.use(
   cors({
-    origin:
-      process.env.CLIENT_URL || "https://pet-adoption-demo-app.vercel.app",
+    origin: ["https://pet-adoption-demo-app.vercel.app"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Specify allowed methods
     allowedHeaders: ["Content-Type", "Authorization"],
