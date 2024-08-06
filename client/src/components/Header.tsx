@@ -74,7 +74,7 @@ useEffect(() => {
           <div className={styles.dropdownMenu} ref={dropdownRef}>
             {user ? (
             <>
-          <span>Welcome, {user.email}</span>
+          <span>Welcome, {user.username}</span>
           <button onClick={handleLogout}>Logout</button>
           <button onClick={handleChatClick}>Chat</button>
            </>

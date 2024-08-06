@@ -5,6 +5,7 @@ import RegisterModal from './components/user/RegisterModal';
 
 interface Adopter {
     email: string;
+    username: string;
     role: string;
     id: string;
 }
@@ -15,8 +16,8 @@ interface AuthContextProps {
   user: Adopter | null;
   admins: Shelter[];
   loading: boolean;
-  login: (email: string, password: string, ) => Promise<void>;
-  register: (email: string, password: string, role: string, onSuccess: (message: string) => void) => Promise<void>;
+  login: (email: string, password: string,  onSuccess: (message: string) => void) => Promise<void>;
+  register: (username: string, email: string, password: string, role: string, onSuccess: (message: string) => void) => Promise<void>;
   logout: () => Promise<void>;
   showLoginModal: () => void;
   showRegisterModal: () => void;
@@ -82,21 +83,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     fetchAdmins();
   }, []);
 
-  const login = async (email: string, password: string, ) => {
+  const login = async (email: string, password: string, onSuccess: (message: string) => void) => {
     try {
       const response = await fetch('http://localhost:8000/v1/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // credentials: 'include',
+        credentials: 'include',
         body: JSON.stringify({ email, password })
       });
 
       if (response.ok) {
         const responseData = await response.json();
-       
+        onSuccess(responseData.message); 
         const user = {
           id: responseData.data.userId,
-          email: responseData.data.username,
+          username: responseData.data.username,
+          email: responseData.data.email,
           role: responseData.data.role
         };
         setUser(user); 
@@ -110,12 +112,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const register = async (email: string, password: string, role: string, onSuccess: (message: string) => void) => {
+  const register = async ( username:string, email: string, password: string, role: string, onSuccess: (message: string) => void) => {
     try {
       const response = await fetch('http://localhost:8000/v1/user/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, role })
+        body: JSON.stringify({ username, email, password, role })
       });
 
       if (response.ok) {

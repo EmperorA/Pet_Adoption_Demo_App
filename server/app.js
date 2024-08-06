@@ -10,7 +10,6 @@ const MemoryStore = require("memorystore")(session);
 
 //Create express server
 const app = express();
-
 //add JSON parsing
 app.use(express.json());
 
@@ -20,8 +19,10 @@ app.use(helmet());
 // add cors middleware
 app.use(
   cors({
-    origin: ["https://pet-adoption-demo-app.vercel.app"],
+    origin: ["http://localhost:3000"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Specify allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
@@ -53,23 +54,24 @@ app.use(passport.session());
 
 //FOR TESTING PURPOSES
 app.use((req, res, next) => {
-  // console.log("Session ID:", req.sessionID);
-  // console.log("Session:", req.session);
-  // console.log("User:", req.user);
+  console.log("Session ID:", req.sessionID);
+  console.log("Session:", req.session);
+  console.log("User:", req.user);
   next();
 });
-
-//preflight
-app.options("*", cors());
 
 //Import v1 api configuration. Good practice to work with versions
 const api = require("./api");
 app.use("/v1", api);
 
+// Import chat routes
+const chatRoutes = require("./routes/chatService/chatRoutes");
+app.use("/api", chatRoutes); // Use the chat routes
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send("Something broke!");
+  res.status(500).json({ message: "Something broke!", error: err.message });
 });
 
 module.exports = app;

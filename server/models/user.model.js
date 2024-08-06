@@ -1,8 +1,8 @@
 const { prisma } = require("../prisma/prismaClient");
 const bcrypt = require("bcrypt");
 
-async function createUser(username, password, role) {
-  if (!username || !password || !role) {
+async function createUser(username, email, password, role) {
+  if (!username || !email || !password || !role) {
     return {
       error: "Missing required properties.",
     };
@@ -11,10 +11,10 @@ async function createUser(username, password, role) {
   const hash = bcrypt.hashSync(password, 10);
   if (hash) {
     try {
-      console.log("...............");
       const userRegistration = await prisma.user.create({
         data: {
-          email: username,
+          username: username,
+          email: email,
           password: hash,
           role: role,
         },
@@ -30,7 +30,7 @@ async function createUser(username, password, role) {
             "Provided input parameters or type of input parameters is invalid.",
         };
       } else if (err.code === "P2002") {
-        return { error: "Username already exists." };
+        return { error: "username or email already exists." };
       }
       return { error: err.message };
     }
@@ -48,6 +48,7 @@ async function verifyPassword(email, password) {
     },
     select: {
       password: true,
+      username: true,
       email: true,
       id: true,
       role: true,
@@ -55,21 +56,27 @@ async function verifyPassword(email, password) {
   });
 
   if (!user) {
-    throw new Error("Incorrect username or password.");
+    throw new Error("Incorrect email or password.");
   }
 
   const hashCompare = bcrypt.compareSync(password, user.password);
   if (hashCompare) {
     return user;
   } else {
-    throw new Error("Incorrect username or password.");
+    throw new Error("Incorrect email or password.");
   }
 }
 
 async function findUserByEmail(email) {
   return await prisma.user.findUnique({
     where: { email: email },
-    select: { id: true, email: true, password: true, role: true },
+    select: {
+      id: true,
+      username: true,
+      email: true,
+      password: true,
+      role: true,
+    },
   });
 }
 
@@ -80,6 +87,7 @@ async function findUserById(userId) {
     },
     select: {
       id: true,
+      username: true,
       email: true,
       role: true,
     },
@@ -95,12 +103,13 @@ async function findUserById(userId) {
 async function searchUser(query) {
   const allUsers = await prisma.user.findMany({
     where: {
-      email: query.username ? query.username : { not: "" },
+      email: query.email ? query.email : { not: "" },
       id: query.id ? query.id : { not: "" },
       role: query.role ? query.role : { not: "" },
     },
     select: {
       id: true,
+      username: true,
       email: true,
       role: true,
     },

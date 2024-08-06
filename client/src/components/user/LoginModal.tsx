@@ -18,16 +18,15 @@ function LoginModal({ show, handleClose, handleShowRegister }: LoginModalProps) 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try{
-    await login(username, password);
-    handleClose();
-  }catch (error) {
-    console.error('Login failed:', error);
-  }
-};
 
+    await login(username, password, (message) =>{
+      alert(message)});
+    handleClose();
+    handleShowRegister
+  
+    }
   return (
-    <Modal show={show} onHide={handleClose}  centered ClassName={styles.customModal}>
+    <Modal show={show} onHide={handleClose}  centered className={styles.customModal}>
       <Modal.Header closeButton className={styles.modalHeader}>
         <Modal.Title className={styles.modalTitle}>Will you help us find our fur-ever homes?</Modal.Title>
       </Modal.Header>

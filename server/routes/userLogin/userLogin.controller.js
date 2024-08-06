@@ -18,7 +18,7 @@ function httpHandleUserLogin(req, res) {
       }
       return res.json({
         message: "Login successful.",
-        data: { username: user.email, userId: user.id },
+        data: { username: user.username, email: user.email, userId: user.id },
       });
     });
   })(req, res);

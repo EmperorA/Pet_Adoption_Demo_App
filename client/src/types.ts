@@ -1,12 +1,13 @@
 // types.ts
 
-import { Timestamp } from 'firebase/firestore';
+
 
 export interface Message {
   id: string;
   userId: string;
+  username: string,
   message: string;
-  timestamp: Timestamp;
+  timestamp: number;
 }
 
 export interface PetProfile {

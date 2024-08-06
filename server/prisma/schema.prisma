@@ -1,45 +1,41 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model User {
-  id                     String    @id @default(uuid()) @db.Uuid
-  email                  String    @unique
+  id                     String        @id @default(uuid())
+  username               String
+  email                  String        @unique
   password               String
   role                   String
   token                  String?
-  tokenCreationTimestamp DateTime? @default(now()) @db.Timestamptz(3)
-  Listing                Listing[]
+  tokenCreationTimestamp DateTime?     @default(now()) @db.Timestamptz(3)
+  listings               Listing[]
+  applications           Application[] // Back-relation to Application
 }
 
 model Listing {
-  id          String  @id @default(uuid())
-  petName     String
-  petPhoto    String
-  petType     String
-  petBreed    String?
-  petAge      Int
-  location    String
-  description String?
-  tags        String?
-
-  creationTimestamp   DateTime @default(now())
-  lastUpdateTimestamp DateTime @updatedAt
-  published           Boolean @default(false)
-
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  id                  String        @id @default(uuid())
+  petName             String
+  petPhoto            String
+  petType             String
+  petBreed            String?
+  petAge              Int
+  location            String
+  description         String?
+  tags                String
+  creationTimestamp   DateTime      @default(now())
+  lastUpdateTimestamp DateTime      @updatedAt
+  published           Boolean       @default(false)
+  userId              String
+  user                User          @relation(fields: [userId], references: [id])
+  applications        Application[] // Back-relation to Application
 }
 
 model Form {
@@ -53,25 +49,23 @@ model Form {
 }
 
 model Application {
-  id                  String   @id @default(uuid())
+  id                  String     @id @default(uuid())
   listingId           String
-  form                Json    
   userId              String
   hasDocuments        Boolean
   status              String
-  creationTimestamp   DateTime @default(now())
-  lastUpdateTimestamp DateTime @updatedAt
+  creationTimestamp   DateTime   @default(now())
+  lastUpdateTimestamp DateTime   @updatedAt
+  listing             Listing    @relation(fields: [listingId], references: [id])
+  user                User       @relation(fields: [userId], references: [id])
+  documents           Document[] // Back-relation to Document
 }
 
 model Document {
-  id                  String   @id @default(uuid())
+  id                  String      @id @default(uuid())
   applicationId       String
-  document            Bytes    @db.ByteA
-  creationTimestamp   DateTime @default(now())
-  lastUpdateTimestamp DateTime @updatedAt
-}
-
-// Only for Testing - To Be Deleted Later
-model Test {
-  id String @id @default(uuid())
+  document            Bytes       @db.ByteA
+  creationTimestamp   DateTime    @default(now())
+  lastUpdateTimestamp DateTime    @updatedAt
+  application         Application @relation(fields: [applicationId], references: [id])
 }

@@ -1,36 +1,34 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const {
-  verifyPassword,
-  findUserById,
-  findUserByEmail,
-} = require("../models/user.model"); // Adjust as needed
+const { findUserById, verifyPassword } = require("../models/user.model");
 
-const strategy = new LocalStrategy(
-  { usernameField: "email" },
-  async (email, password, done) => {
-    try {
-      const user = await findUserByEmail(email); // Find the user by email
-      if (!user) {
-        return done(null, false, { message: "Incorrect email." });
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password",
+    },
+    async (email, password, done) => {
+      try {
+        const user = await verifyPassword(email, password);
+        if (!user) {
+          return done(null, false, { message: "Incorrect email or password." });
+        }
+        return done(null, user);
+      } catch (err) {
+        return done(err);
       }
-      const authenticatedUser = await verifyPassword(email, password);
-      return done(null, authenticatedUser);
-    } catch (err) {
-      return done(err);
     }
-  }
+  )
 );
 
-passport.use(strategy);
-
 passport.serializeUser((user, done) => {
-  done(null, user.id); // Store user id in session
+  done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await findUserById(id);
+    const user = await findUserById(id); // Ensure findUserById is correctly implemented
     done(null, user);
   } catch (err) {
     done(err);

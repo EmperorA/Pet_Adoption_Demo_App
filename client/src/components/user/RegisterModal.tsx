@@ -12,6 +12,7 @@ interface RegisterModalProps {
 
 function RegisterModal({ show, handleClose, handleShowLogin }: RegisterModalProps) {
   const [email, setEmail] = useState<string>('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [role, setRole] = useState<string>('user');
@@ -20,7 +21,7 @@ function RegisterModal({ show, handleClose, handleShowLogin }: RegisterModalProp
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await register(email, password, role, (message) => {
+    await register(username, email, password, role, (message) => {
       alert(message)});
     handleClose();
     handleShowLogin
@@ -46,6 +47,16 @@ function RegisterModal({ show, handleClose, handleShowLogin }: RegisterModalProp
                 <option value="adopter">Adopter</option>
                 <option value="shelter">Shelter</option>
               </Form.Control>
+            </Form.Group>
+            <Form.Group className={styles.fromGroup}>
+              <Form.Control
+                type="text"
+                placeholder="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                className={styles.formControl}
+              />
             </Form.Group>
             <Form.Group className={styles.fromGroup}>
               <Form.Control
