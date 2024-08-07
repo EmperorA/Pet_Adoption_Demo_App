@@ -22,7 +22,7 @@ async function newListing(listing) {
       },
     });
 
-    if (user.role === "admin") {
+    if (user.role === "shelter") {
       const newListing = await prisma.listing.create({
         data: {
           id: listing.id,

@@ -1,7 +1,7 @@
 .landing {
   background-color: rgb(213, 211, 211);
   width: 100%;
-  height: 360vh;
+
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -9,8 +9,9 @@
   overflow: hidden;
 }
 .frontPage {
-  padding-top: 15rem;
+  padding-top: 10rem;
   overflow: hidden;
+  height: 95vh;
   width: 100%;
   position: relative;
 }

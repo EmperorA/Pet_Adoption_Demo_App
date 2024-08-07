@@ -46,7 +46,7 @@ export default function Landing (){
     <div className="app-container">
     
       <Header handleShowLogin={showLoginModal} handleShowRegister={showRegisterModal} handleChatClick={handleChatClick} />
-      <div className={styles.mainContent}>
+      
       <div className={styles.landing}>
       <div className={styles.frontPage}>    
         <div className={styles.slides} style={{ transform: `translateX(-${currentSlide * 100}vw)` }}>
@@ -82,13 +82,14 @@ export default function Landing (){
             />
           ))}
         </div>
+     
       </div>
       <Adoption />
       <Discover />
       </div>
       <Footer />
       <ChatRoom isVisible={isChatRoomVisible} onClose={() => setIsChatRoomVisible(false)} />
-    </div>
+    
     </div>
   )  
 }

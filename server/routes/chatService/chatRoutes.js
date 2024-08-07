@@ -11,6 +11,29 @@ function ensureAuthenticated(req, res, next) {
   res.status(401).json({ error: "User is not authenticated" });
 }
 
+const generateChatRoomId = (userId, adminId) => {
+  return [userId, adminId].sort().join("_");
+};
+
+// Middleware to log incoming requests
+router.use((req, res, next) => {
+  console.log(`Received ${req.method} request for ${req.url}`);
+  next();
+});
+// Endpoint to generate chat room ID
+router.post("/generate-chat-room-id", ensureAuthenticated, (req, res) => {
+  console.log("Request received to generate chat room ID");
+  console.log("Request body:", req.body);
+  const { userId, adminId } = req.body;
+
+  if (!userId || !adminId) {
+    return res.status(400).json({ error: "userId and adminId are required" });
+  }
+  const chatRoomId = generateChatRoomId(userId, adminId);
+  console.log("Generated chat room ID:", chatRoomId);
+  res.json({ chatRoomId });
+});
+
 router.post("/send-message", ensureAuthenticated, (req, res) => {
   const user = req.user;
   const { chatRoomId, message } = req.body;

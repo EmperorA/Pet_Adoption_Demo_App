@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { sendMessage, getMessages } from '../chatService';
+import { sendMessage, getMessages, getChatRoomId } from '../chatService';
 import { useAuth } from '../AuthContext';
 import { Message } from '../types';
 import styles from './ChatModal.module.css';
@@ -15,27 +15,32 @@ export default function ChatRoom({ isVisible, onClose }: ChatModalProps) {
   const [message, setMessage] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [isMinimized, setIsMinimized] = useState<boolean>(false);
+  const [chatRoomId, setChatRoomId] = useState<string>('');
+  
 
-  const chatRoomId = user && admins.length ? [user.id, admins[0].id].sort().join('_') : 'defaultRoom';
 
   useEffect(() => {
-    if (chatRoomId !== 'defaultRoom') {
-      const fetchMessages = async () => {
+    const fetchChatRoomId = async () => {
+      if (user && admins.length > 0) {
+        console.log("User ID:", user.id);
+        console.log("Admin ID:", admins[0].id);
         try {
+          const chatRoomId = await getChatRoomId(user.id, admins[0].id);
+          setChatRoomId(chatRoomId);
           const fetchedMessages = await getMessages(chatRoomId);
           setMessages(fetchedMessages);
         } catch (error) {
-          console.error('Error fetching messages:', error);
+          console.error('Error generating or fetching chat room ID:', error);
         }
-      };
+      }
+    };
 
-      fetchMessages();
-    }
-  }, [chatRoomId]);
+    fetchChatRoomId();
+  }, [user, admins]);
 
   const handleSendMessage = async () => {
   
-    if (!user || !admins || message.trim() === '') {
+    if (!user || admins.length === 0 || message.trim() === '' || !chatRoomId) {
       return;
     }
   

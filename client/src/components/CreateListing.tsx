@@ -23,7 +23,7 @@ export default function Discover() {
         }
     }, [user]);
      if (!user) {
-    return <div>Please log in to access the chat.</div>;
+    return;
   }
     // change any later when figure out type of event
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
