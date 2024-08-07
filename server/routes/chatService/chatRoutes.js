@@ -1,15 +1,8 @@
 const express = require("express");
 const { ref, push, get, serverTimestamp } = require("firebase/database");
 const { db } = require("../../firebaseConfig");
+const { ensureAuthenticated } = require("../../middleware/authentication");
 const router = express.Router();
-
-// Middleware to ensure user is authenticated
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.status(401).json({ error: "User is not authenticated" });
-}
 
 const generateChatRoomId = (userId, adminId) => {
   return [userId, adminId].sort().join("_");

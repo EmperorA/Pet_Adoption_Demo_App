@@ -48,15 +48,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (response.ok) {
           const data = await response.json();
           setUser(data)
-          localStorage.setItem('user', JSON.stringify(data));
-        
+          localStorage.setItem('user', JSON.stringify(data));        
           } else {
             setUser(null);
             localStorage.removeItem('user');
-          }
-       
+          }       
       } catch (error) {
-       
         setUser(null)
         localStorage.removeItem('user');
       } finally {

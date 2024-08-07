@@ -7,6 +7,10 @@ const morgan = require("morgan");
 const session = require("express-session");
 const passport = require("passport");
 const MemoryStore = require("memorystore")(session);
+const {
+  ensureAuthenticated,
+  httpGetAuthenticatedUser,
+} = require("./middleware/authentication");
 
 //Create express server
 const app = express();
@@ -65,9 +69,11 @@ app.use((req, res, next) => {
 const api = require("./api");
 app.use("/v1", api);
 
+app.get("/v1/auth/user", httpGetAuthenticatedUser);
+
 // Import chat routes
 const chatRoutes = require("./routes/chatService/chatRoutes");
-app.use("/api", chatRoutes); // Use the chat routes
+app.use("/api", ensureAuthenticated, chatRoutes); // Use the chat routes
 
 // Error handling middleware
 app.use((err, req, res, next) => {

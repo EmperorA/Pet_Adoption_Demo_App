@@ -48,16 +48,16 @@ const httpHandleUserLogout = (req, res) => {
   }
 };
 
-const httpGetAuthenticatedUser = (req, res) => {
-  if (req.isAuthenticated()) {
-    return res.json(req.user);
-  } else {
-    return res.status(401).json({ message: "You are not logged in." });
-  }
-};
+// const httpGetAuthenticatedUser = (req, res) => {
+//   if (req.isAuthenticated()) {
+//     return res.json(req.user);
+//   } else {
+//     return res.status(401).json({ message: "You are not logged in." });
+//   }
+// };
 
 module.exports = {
   httpHandleUserLogin,
   httpHandleUserLogout,
-  httpGetAuthenticatedUser,
+  // httpGetAuthenticatedUser,
 };
