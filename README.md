@@ -60,7 +60,7 @@ To them you are their world: finding a forever home for those without a collar
     - 5 years or more
 - **View Animal Details**: See all details made available in the listing (name, description, etc).
 - **Ask Questions via Chat**:
-  - **Registration/Login Required**: Pet lovers must register (email & password) or login (email & password) to use chat.
+  - **Registration/Login Required**: Pet lovers must register (username, email & password) or login (email & password) to use chat.
   - **Chat Interaction**:
     - Send questions about a specific pet
     - Questions are received in the shelter user’s inbox
@@ -71,15 +71,16 @@ To them you are their world: finding a forever home for those without a collar
 
 ## Running the project
 
-### Live site
-
-To be deployed...
+[### Live site](https://pet-adoption-demo-app.vercel.app/)
 
 ### From the repo:
 
 1. Clone this project locally
 2. Run `npm install` in your bash/command line
-3. Run `npm run dev` in your bash/command line
+3. Run `npm run dev` in your bash/command line for the client
+4. Rub `npm run watch` in your bash/command line for the server side
+
+The server side serve as an API for the client side.
 
 ## Front-end Dependencies:
 
