@@ -69,8 +69,6 @@ app.use((req, res, next) => {
 const api = require("./api");
 app.use("/v1", api);
 
-app.get("/v1/auth/user", httpGetAuthenticatedUser);
-
 // Import chat routes
 const chatRoutes = require("./routes/chatService/chatRoutes");
 app.use("/api", ensureAuthenticated, chatRoutes); // Use the chat routes

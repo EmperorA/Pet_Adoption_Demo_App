@@ -1,5 +1,5 @@
 const express = require("express");
-
+const { httpGetAuthenticatedUser } = require("../../middleware/authentication");
 const loginRouter = express.Router();
 
 const {
