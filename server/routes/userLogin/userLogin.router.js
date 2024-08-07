@@ -5,7 +5,6 @@ const loginRouter = express.Router();
 const {
   httpHandleUserLogin,
   httpHandleUserLogout,
-  httpGetAuthenticatedUser,
 } = require("./userLogin.controller");
 
 //Router for user login
