@@ -19,7 +19,7 @@ app.use(helmet());
 // add cors middleware
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://pet-adoption-demo-app.vercel.app"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Specify allowed methods
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -32,21 +32,21 @@ app.use(morgan("combined")); //combined is a predefined format as to how the out
 //Import passport configuration
 require("./services/passport");
 
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: new MemoryStore({
-      checkPeriod: 86400000, // prune/remove expired entries every 24h
-    }),
-    cookie: {
-      secure: process.env.NODE_ENV === "production",
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24, // Equals 1 day (1 day * 24 hr/1 day * 60 min/1 hr * 60 sec/1 min * 1000 ms / 1 sec)
-    },
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     store: new MemoryStore({
+//       checkPeriod: 86400000, // prune/remove expired entries every 24h
+//     }),
+//     cookie: {
+//       secure: process.env.NODE_ENV === "production",
+//       httpOnly: true,
+//       maxAge: 1000 * 60 * 60 * 24, // Equals 1 day (1 day * 24 hr/1 day * 60 min/1 hr * 60 sec/1 min * 1000 ms / 1 sec)
+//     },
+//   })
+// );
 
 //Initialize sessions & passport
 app.use(passport.initialize());
