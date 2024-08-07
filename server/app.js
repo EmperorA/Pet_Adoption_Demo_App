@@ -7,10 +7,7 @@ const morgan = require("morgan");
 const session = require("express-session");
 const passport = require("passport");
 const MemoryStore = require("memorystore")(session);
-const {
-  ensureAuthenticated,
-  httpGetAuthenticatedUser,
-} = require("./middleware/authentication");
+const { ensureAuthenticated } = require("./middleware/authentication");
 
 //Create express server
 const app = express();
