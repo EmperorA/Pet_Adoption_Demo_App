@@ -3,7 +3,7 @@ import { Message } from './types';
 
 export const getChatRoomId = async (userId: string, adminId: string): Promise<string> => {
   try {
-    const response = await fetch('http://localhost:8000/api/generate-chat-room-id', {
+    const response = await fetch('https://pawfectmatch.onrender.com/api/generate-chat-room-id', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export const getChatRoomId = async (userId: string, adminId: string): Promise<st
 
 export const sendMessage = async (chatRoomId: string, message: string): Promise<string> => {
   try {
-    const response = await fetch('http://localhost:8000/api/send-message', {
+    const response = await fetch('https://pawfectmatch.onrender.com/api/send-message', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export const sendMessage = async (chatRoomId: string, message: string): Promise<
 export const getMessages = async (chatRoomId: string): Promise<Message[]> => {
   try {
     console.log(chatRoomId)
-    const response = await fetch(`http://localhost:8000/api/messages/${chatRoomId}`, {
+    const response = await fetch(`https://pawfectmatch.onrender.com/api/messages/${chatRoomId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
