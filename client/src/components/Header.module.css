@@ -100,13 +100,13 @@
   }
   .topRow {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     align-items: center;
   }
   .bottomRow {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     align-items: center;
     margin-top: 0.5rem;
