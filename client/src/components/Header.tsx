@@ -52,9 +52,12 @@ useEffect(() => {
       }, [dropdownVisible]);
     return(
         <header className={styles.header} >
+          <div className={styles.topRow}>
             <Location />
        
             <h4 className={styles.appName}>Pawfect Match</h4>
+            </div>
+              <div className={styles.bottomRow}>
             <form className={styles.searchForm} onSubmit={handleSearchSubmit}>
             
               <input
@@ -86,6 +89,7 @@ useEffect(() => {
           )}</div>
         )}
         </div>
+         </div>
         </header >
     )   
 }
