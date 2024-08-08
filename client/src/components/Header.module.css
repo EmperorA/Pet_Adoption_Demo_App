@@ -100,10 +100,20 @@
 
   .searchForm {
     margin-bottom: 1rem;
-    width: 50%;
+    width: 100%;
   }
 
   .userActions {
     justify-content: flex-start;
+    width: 100%; /* Ensure user actions take full width on mobile */
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  .profileIcon {
+    margin-left: auto; /* Align profile icon to the right */
+  }
+  .dropdownMenu {
+    width: 100%; /* Ensure dropdown takes full width on mobile */
   }
 }
