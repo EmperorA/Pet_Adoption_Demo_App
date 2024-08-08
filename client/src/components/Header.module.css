@@ -19,7 +19,8 @@
   z-index: 1000;
 }
 
-.topRow .bottomRow {
+.topRow,
+.bottomRow {
   display: flex;
   flex-direction: row;
 }
