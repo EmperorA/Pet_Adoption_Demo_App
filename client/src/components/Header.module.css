@@ -2,6 +2,7 @@
   border-radius: 50px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: black;
+  display: flex;
   align-items: center;
   padding: 0.5rem;
   background-color: rgb(188, 185, 185);
