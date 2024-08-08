@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
 const MemoryStore = require("memorystore")(session);
@@ -16,6 +17,8 @@ app.use(express.json());
 
 //add Helmet
 app.use(helmet());
+
+app.use(cookieParser());
 
 // add cors middleware
 app.use(
