@@ -41,9 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
  
 
   useEffect(() => {
-    // const user = localStorage.getItem('user')
-    // user? setUser(JSON.parse(user)) : setUser(null)
-    const fetchUser = async () => {
+       const fetchUser = async () => {
       setLoading(true);
       try {
         const response = await fetch('https://pawfectmatch-api.onrender.com/v1/auth/user', { credentials: 'include' });
@@ -143,7 +141,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
 
       if (response.ok) {
-       setUser(null);     
+       setUser(null); 
+       localStorage.removeItem('user')    
 
       }
     } catch (error) {
