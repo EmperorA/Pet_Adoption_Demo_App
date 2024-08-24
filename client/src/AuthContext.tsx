@@ -98,7 +98,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           email: responseData.data.email,
           role: responseData.data.role
         };
-        setUser(user); 
+        // setUser(user); 
          localStorage.setItem('user', JSON.stringify(user));
       } else {
         const errorData = await response.json();
