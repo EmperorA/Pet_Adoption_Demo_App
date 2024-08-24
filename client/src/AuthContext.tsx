@@ -41,6 +41,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
  
 
   useEffect(() => {
+    const user = localStorage.getItem('user')
+    user? setUser(JSON.parse(user)) : setUser(null)
     const fetchUser = async () => {
       setLoading(true);
       try {
@@ -80,6 +82,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     fetchAdmins();
   }, []);
 
+  
+
   const login = async (email: string, password: string, onSuccess: (message: string) => void) => {
     try {
       const response = await fetch('https://pawfectmatch-api.onrender.com/v1/user/login', {
@@ -98,7 +102,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           email: responseData.data.email,
           role: responseData.data.role
         };
-        // setUser(user); 
+        setUser(user); 
          localStorage.setItem('user', JSON.stringify(user));
       } else {
         const errorData = await response.json();
@@ -154,7 +158,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return (
     <AuthContext.Provider value={{ 
-      user, 
+      user,
       admins, 
       loading, 
       login, 
