@@ -133,21 +133,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const logout = async () => {
-    // try {
+    try {
      
-      // const response = await fetch('https://pawfectmatch-api.onrender.com/v1/user/logout', {
-      //   method: 'POST',
-      //   credentials: 'include'
-      // });
+      const response = await fetch('https://pawfectmatch-api.onrender.com/v1/user/logout', {
+        method: 'POST',
+        credentials: 'include'
+      });
 
-      // if (response.ok) {
+      if (response.ok) {
        setUser(null); 
        localStorage.removeItem('user')    
 
-    //   }
-    // } catch (error) {
-    //   console.error('Logout failed:', error);
-    // }
+      }
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
   };
 
   const showLoginModal = () => setIsLoginModalVisible(true);
