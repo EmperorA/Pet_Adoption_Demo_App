@@ -50,8 +50,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setUser(data)
           localStorage.setItem('user', JSON.stringify(data));        
           } else {
-            // setUser(null);
-            // localStorage.removeItem('user');
+            setUser(null);
+            localStorage.removeItem('user');
           }       
       } catch (error) {
         // setUser(null)
